@@ -125,7 +125,7 @@ int64_t flag_check(char flag[51])
         if ((v10 & 1) != 0)
             v10 ^= 0x42u;
         v10 = ~v10;
-        unsigned char lol = *((char*)static_val + i);
+        unsigned char lol = *((char*)static_val + i); //lol here refers to the char obtained from the static_val which will be compared against v10
         if (v10 != lol)
         {
           
