@@ -42,7 +42,7 @@ int find_index(uint8_t memory_block[], uint8_t mem_b_byte, int size) {
     }
 }
 
-void reverse_algorthim(uint8_t Chunk_8_bytes_arg[]) // Thanks to Mahmoud Abdullah for encouraging me not to give up and to 
+void reverse_algorthim(uint8_t Chunk_8_bytes_arg[]) // Thanks to Mahmoud Abdullah for encouraging me to not to give up and to 
                                                     //          think in a simpler way than I was, check his Git, https://github.com/Th3-0b3l1sk 
 {                                                   // 
     for (int op_count = 0; op_count < OPERATIONS_COUNT; ++op_count)
