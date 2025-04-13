@@ -37,3 +37,47 @@ public class ReportGenerator {
         // Save to database
     }
 }
+
+public class ReportGenerator {
+    public void generateDailyReport(List<Transaction> transactions) {
+        LocalDate startDate = LocalDate.now();
+        double total = calculateTotal(transactions, startDate);
+        
+        printReport("Daily Report", total, startDate, LocalDate.now());
+        saveReport("daily", total);
+    }
+    
+    public void generateWeeklyReport(List<Transaction> transactions) {
+        LocalDate startDate = LocalDate.now().minusDays(7);
+        double total = calculateTotal(transactions, startDate);
+        
+        printReport("Weekly Report", total, startDate, LocalDate.now());
+        saveReport("weekly", total);
+    }
+    
+    private double calculateTotal(List<Transaction> transactions, LocalDate startDate) {
+        double total = 0;
+        for (Transaction t : transactions) {
+            if (t.getDate().isAfter(startDate.minusDays(1))) {
+                total += t.getAmount();
+            }
+        }
+        return total;
+    }
+    
+    private void printReport(String title, double total, LocalDate startDate, LocalDate endDate) {
+        System.out.println(title);
+        System.out.println(String.join("", Collections.nCopies(title.length(), "-")));
+        System.out.println("Total: $" + total);
+        
+        if (startDate.equals(endDate)) {
+            System.out.println("Date: " + endDate);
+        } else {
+            System.out.println("Period: " + startDate + " to " + endDate);
+        }
+    }
+    
+    private void saveReport(String type, double amount) {
+        // Save to database
+    }
+}
